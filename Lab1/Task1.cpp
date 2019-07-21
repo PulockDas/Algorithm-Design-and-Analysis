@@ -17,6 +17,7 @@ void hashmap(string s){
 
 int main ()
 {
+    cout << "I'm sorry for collision.\nGive your string :\n";
     string txt;
     getline(cin, txt);
     txt = ' '+txt;
