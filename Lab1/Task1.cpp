@@ -1,12 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-int radix;
-int arr[13];
+#define ll long long
+
+ll radix;
+ll arr[13];
 
 void hashmap(string s){
-    int r = 0;
+    ll r = 0;
 
-    for(int i=0; i<s.length(); i++){
+    for(ll i=0; i<s.length(); i++){
         r += s[i] * pow(radix, i);
     }
 
@@ -22,13 +24,13 @@ int main ()
     getline(cin, txt);
     txt = ' '+txt;
 
-    int in;
-    cout << "radix point :\n";
+    ll in;
+    cout << "radix poll :\n";
     cin >> in;
     radix = in;
 
-    int suru = 0;
-    for(int i=0; i<txt.length(); i++){
+    ll suru = 0;
+    for(ll i=0; i<txt.length(); i++){
 
         if(txt[i] == ' ' || txt[i] == '.' || txt[i] == ',' || txt[i] == ';' || txt[i] == ':'){
             suru = i+1;
@@ -45,8 +47,8 @@ int main ()
         }
     }
 
-    int ans = 0;
-    for(int i=0; i<13; i++){
+    ll ans = 0;
+    for(ll i=0; i<13; i++){
         if(arr[i] > 0)
             ans++;
     }
