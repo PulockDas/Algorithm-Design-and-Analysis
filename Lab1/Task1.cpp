@@ -11,7 +11,7 @@ void hashmap(string s){
     }
 
     r %= 13;
-    cout << r << endl;
+    //cout << r << endl;
     arr[r]++;
 }
 
@@ -36,7 +36,7 @@ int main ()
             for(i=suru; i<txt.length(); i++){
 
                 if(txt[i] == ' ' || txt[i] == '.' || txt[i] == ',' || txt[i] == ';' || txt[i] == ':'){
-                    string s = txt.substr(suru, i-suru-1);
+                    string s = txt.substr(suru, i-suru);
                     hashmap(s);
                     i--;
                     break;
@@ -51,7 +51,7 @@ int main ()
             ans++;
     }
 
-    cout << ans;
+    cout <<"Number of unique words : "<< ans;
 
     return 0;
 }
