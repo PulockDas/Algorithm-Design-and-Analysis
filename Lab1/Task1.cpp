@@ -1,42 +1,57 @@
 #include <bits/stdc++.h>
 using namespace std;
-int arr[10];
+int radix;
+int arr[13];
+
+void hashmap(string s){
+    int r = 0;
+
+    for(int i=0; i<s.length(); i++){
+        r += s[i] * pow(radix, i);
+    }
+
+    r %= 13;
+    cout << r << endl;
+    arr[r]++;
+}
 
 int main ()
 {
-    string s;
-    getline(cin, s);
+    string txt;
+    getline(cin, txt);
+    txt = ' '+txt;
 
-    cout << "Radix point : ";
-    int r;
-    cin >> r;
+    int in;
+    cout << "radix point :\n";
+    cin >> in;
+    radix = in;
 
-    int l = s.length();
-    int rad = 0, p = 0;
+    int suru = 0;
+    for(int i=0; i<txt.length(); i++){
 
-    for(int i=0; i<l; i++){
+        if(txt[i] == ' ' || txt[i] == '.' || txt[i] == ',' || txt[i] == ';' || txt[i] == ':'){
+            suru = i+1;
 
-        if(s[i] != ' ' && s[i] != '.' && s[i] != ',' && s[i] != ';'){
-            rad += s[i] * pow(r, p);
-            p++;
+            for(i=suru; i<txt.length(); i++){
+
+                if(txt[i] == ' ' || txt[i] == '.' || txt[i] == ',' || txt[i] == ';' || txt[i] == ':'){
+                    string s = txt.substr(suru, i-suru-1);
+                    hashmap(s);
+                    i--;
+                    break;
+                }
+            }
         }
-
-        else{
-            rad %= 10;
-            arr[rad] = 1;
-
-            rad = 0;
-            p = 0;
-        }
-
     }
 
-    int c = 0;
-    for(int i=0; i<10; i++){
-        if(arr[i])
-            c++;
+    int ans = 0;
+    for(int i=0; i<13; i++){
+        if(arr[i] > 0)
+            ans++;
     }
 
-    cout << "Number of unique word = " << c;
+    cout << ans;
 
+    return 0;
 }
+
